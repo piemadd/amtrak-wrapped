@@ -104,7 +104,7 @@ const Distance = ({ distance }) => {
               fill: "#fff",
             }}
           >
-            &#x2022; 11,428,570 sheppeys
+            &#x2022; {prettyPrintNum(distance/0.875)} sheppeys
           </text>
           <text
             x="60"
@@ -118,7 +118,7 @@ const Distance = ({ distance }) => {
               fill: "#fff",
             }}
           >
-            &#x2022; 6,462,669,677 horse-lengths
+            &#x2022; {prettyPrintNum(distance/0.001547348)} horse-lengths
           </text>
           <text
             x="60"
@@ -132,7 +132,7 @@ const Distance = ({ distance }) => {
               fill: "#fff",
             }}
           >
-            &#x2022; 175,999,926 football fields
+            &#x2022; {prettyPrintNum(distance/0.0568182)} football fields
           </text>
           <text
             x="60"
@@ -146,7 +146,7 @@ const Distance = ({ distance }) => {
               fill: "#fff",
             }}
           >
-            &#x2022; 9,457,279,760 smoots
+            &#x2022; {prettyPrintNum(distance/0.0010573864)} smoots
           </text>
 
           <text
