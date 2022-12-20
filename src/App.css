@@ -35,9 +35,19 @@ h1 {
   margin: 0.5rem 0;
 }
 
+h2 {
+  margin: 0.75rem 0;
+}
+
+hr.solid {
+  width: 100%;
+  border-top: 1px solid var(--plat-mist);
+}
+
 #slogan {
   font-size: 2rem;
-  margin-top: -16px;
+  margin-top: -12px;
+  margin-bottom: 0px;
 }
 
 #slogan > i {
@@ -80,4 +90,33 @@ button {
 
 .trainSelector > input {
   margin-bottom: 2px;
+}
+
+/* svg */
+text {
+  font-weight: 400;
+  font-size: 48px;
+  fill: #fff;
+}
+
+text.length {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 140px;
+}
+
+text.footer {
+  font-size: 32px;
+  text-anchor: middle;
+}
+
+text.length > tspan {
+  font-size: 48px;
+}
+
+.result > svg {
+  width: 80vw;
+  height: 80vw;
+  max-width: 800px;
+  max-height: 800px;
 }
