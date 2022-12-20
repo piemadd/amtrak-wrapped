@@ -2,6 +2,9 @@
   --fg: #fff;
   --bg: #111;
 
+  --bg-2: #222;
+  --bg-3: #333;
+
   --blue: #00537e;
   --deep-blue: #003a7b;
   --heritage-blue: #0078b9;
@@ -16,6 +19,59 @@ body {
   font-family: 'Kanit', sans-serif;
   background-color: var(--bg);
   color: var(--fg);
+  width: 98vw;
+  margin: 1vw;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+#slogan {
+  font-size: 2rem;
+  margin-top: -16px;
+}
+
+#slogan > i {
+  color: var(--red);
+  margin-right: 0.25rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.5rem 0;
+}
+
+input {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--bg-2);
+  color: var(--fg);
+}
+
+button {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: var(--bg-2);
+  color: var(--fg);
+  cursor: pointer;
 }
 
 .trainSelector {
