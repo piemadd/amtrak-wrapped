@@ -14,7 +14,8 @@
   "dependencies": {
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.5",
-    "jimp": "^0.16.2"
+    "jimp": "^0.16.2",
+    "js-base64": "^3.7.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",

@@ -35,10 +35,75 @@ export default function App() {
     const dMiles = d * 0.000621371; // in miles
     return dMiles;
   };
-
+  /*
   const [inputFields, setInputFields] = useState([
     { train: "", start: "", stop: "" },
   ]);
+  */
+
+  const [inputFields, setInputFields] = useState([
+    {
+      "train": "Crescent",
+      "start": "ATL - Atlanta",
+      "stop": "WAS - Washington Union Station"
+    },
+    {
+      "train": "Capitol Limited",
+      "start": "WAS - Washington Union Station",
+      "stop": "CHI - Chicago Union Station"
+    },
+    {
+      "train": "Lincoln Service",
+      "start": "CHI - Chicago Union Station",
+      "stop": "JOL - Joliet Gateway Center"
+    },
+    {
+      "train": "Cardinal",
+      "start": "CHI - Chicago Union Station",
+      "stop": "ALX - Alexandria"
+    },
+    {
+      "train": "Acela",
+      "start": "WAS - Washington Union Station",
+      "stop": "BOS - Boston"
+    },
+    {
+      "train": "Downeaster",
+      "start": "BON - Boston",
+      "stop": "POR - Portland"
+    },
+    {
+      "train": "Downeaster",
+      "start": "POR - Portland",
+      "stop": "BON - Boston"
+    },
+    {
+      "train": "Lake Shore Limited",
+      "start": "BOS - Boston",
+      "stop": "CHI - Chicago Union Station"
+    },
+    {
+      "train": "Capitol Limited",
+      "start": "CHI - Chicago Union Station",
+      "stop": "WAS - Washington Union Station"
+    },
+    {
+      "train": "Crescent",
+      "start": "WAS - Washington Union Station",
+      "stop": "ATL - Atlanta"
+    },
+    {
+      "train": "Crescent",
+      "start": "ATL - Atlanta",
+      "stop": "WAS - Washington Union Station"
+    },
+    {
+      "train": "Capitol Limited",
+      "start": "WAS - Washington Union Station",
+      "stop": "CHI - Chicago Union Station"
+    }
+  ])
+
   const [results, setResults] = useState({
     completed: false,
     totalDistance: 0,
@@ -276,7 +341,7 @@ export default function App() {
           setInputFields(JSON.parse(event.target.value));
         }}
         value={JSON.stringify(inputFields, null, 2)}
-        style={{ width: "600px", height: "400px" }}
+        style={{ width: "80vw", height: "400px" }}
       ></textarea>
     </main>
   );

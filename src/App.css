@@ -21,6 +21,7 @@ body {
   color: var(--fg);
   width: 98vw;
   margin: 1vw;
+  overflow-x: hidden;
 }
 
 main {
