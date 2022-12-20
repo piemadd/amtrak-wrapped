@@ -11,3 +11,9 @@
   --charcoal-grey: #65686b;
   --anthracite-grey: #495153;
 }
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+}
