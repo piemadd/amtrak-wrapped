@@ -6,7 +6,7 @@
   --deep-blue: #003a7b;
   --heritage-blue: #0078b9;
   --red: #ef3824;
-  --deep-blue: #cf202e;
+  --deep-red: #cf202e;
   --plat-mist: #cbd1d5;
   --charcoal-grey: #65686b;
   --anthracite-grey: #495153;
@@ -16,4 +16,12 @@ body {
   font-family: 'Kanit', sans-serif;
   background-color: var(--bg);
   color: var(--fg);
+}
+
+.trainSelector {
+  margin: 0.5rem 0;
+}
+
+.trainSelector > input {
+  margin-bottom: 2px;
 }
