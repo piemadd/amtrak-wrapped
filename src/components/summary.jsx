@@ -65,7 +65,7 @@ const Summary = ({ miles, states, trips }) => {
             }}
           >
             <tspan fontWeight="700" fontStyle="italic">
-              {states.length} states
+              {states.length} {states.length === 1 ? "state" : "states"}
             </tspan>
             , while creating less
           </text>
