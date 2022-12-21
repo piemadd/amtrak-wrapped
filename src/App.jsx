@@ -8,6 +8,7 @@ import Driving from "./components/driving.jsx";
 import Flying from "./components/flying.jsx";
 import States from "./components/states.jsx";
 import Summary from "./components/summary.jsx";
+import { isConditionalExpression } from "typescript";
 
 //grams co2 per passenger mile
 const carbonStats = {
@@ -51,7 +52,7 @@ export default function App() {
   };
 
   const [inputFields, setInputFields] = useState([
-    { train: "Acela", start: "", stop: "" },
+    { train: "Acela", start: "BAL - Baltimore Penn Station", stop: "BAL - Baltimore Penn Station" },
   ]);
 
   const [results, setResults] = useState({
@@ -75,7 +76,7 @@ export default function App() {
     let data = [...inputFields];
     data.splice(index, 1);
 
-    if (data.length === 0) data.push({ train: "Acela", start: "", stop: "" });
+    if (data.length === 0) data.push({ train: "Acela", start: "BAL - Baltimore Penn Station", stop: "BAL - Baltimore Penn Station" });
     setInputFields(data);
   };
 
@@ -86,7 +87,7 @@ export default function App() {
   };
 
   const addFields = () => {
-    let newfield = { train: "Acela", start: "", stop: "" };
+    let newfield = { train: "Acela", start: "BAL - Baltimore Penn Station", stop: "BAL - Baltimore Penn Station" };
     setInputFields([...inputFields, newfield]);
   };
 
@@ -98,8 +99,6 @@ export default function App() {
       const trainArray = routes[train][i];
       let startStationIndex = trainArray.indexOf(startStation);
       let stopStationIndex = trainArray.indexOf(stopStation);
-
-      console.log(startStationIndex, stopStationIndex);
 
       if (startStationIndex === -1 || stopStationIndex === -1) continue;
 

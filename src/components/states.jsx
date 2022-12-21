@@ -1,9 +1,7 @@
 import domtoimage from "dom-to-image";
 
 const States = ({ states }) => {
-  console.log(states)
   const determineFill = (state) => {
-    console.log(state, states.includes(state.toUpperCase()))
     if (states.includes(state.toUpperCase())) {
       return "#CF202E";
     } else {
