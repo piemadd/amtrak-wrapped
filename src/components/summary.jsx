@@ -46,7 +46,7 @@ const Summary = ({ miles, states, trips }) => {
               fill: "#fff",
             }}
           >
-            {trips.length === 1 ? "trip" : "trips"}{" "}
+            {trips.length === 1 ? "trip" : "trips"}{", "}
             <tspan fontWeight="700" fontStyle="italic">
               {prettyPrintNum(miles)} miles
             </tspan>
