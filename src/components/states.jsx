@@ -1,7 +1,9 @@
 import domtoimage from "dom-to-image";
 
 const States = ({ states }) => {
+  console.log(states)
   const determineFill = (state) => {
+    console.log(state, states.includes(state.toUpperCase()))
     if (states.includes(state.toUpperCase())) {
       return "#CF202E";
     } else {
@@ -215,7 +217,7 @@ const States = ({ states }) => {
             <path
               id="nd"
               d="M400.713 304.671L400.452 299.316L399.032 294.089L397.724 284.336L397.399 277.313L395.975 275.092L394.833 271.269V263.918L395.323 261.141L393.812 257.212L373.503 256.81L360.22 256.348L341.277 255.423L323.453 254.077L322.552 264.244L321.573 275.026L319.959 292.85L319.612 300.724L360.206 303.414L400.713 304.671Z"
-              fill={determineFill('or')}
+              fill={determineFill('nd')}
             />
             <path
               id="sd"
