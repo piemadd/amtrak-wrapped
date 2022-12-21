@@ -52,7 +52,7 @@ hr.solid {
 }
 
 #slogan > i {
-  color: var(--red);
+  color: var(--deep-red);
   margin-right: 0.25rem;
 }
 
@@ -76,7 +76,7 @@ input {
 button {
   font-size: 1rem;
   font-weight: 300;
-  margin: 0.25rem 0;
+  margin: 0.25rem 0.1rem;
   padding: 0.5rem;
   border: none;
   border-radius: 0.25rem;
@@ -86,11 +86,20 @@ button {
 }
 
 .trainSelector {
-  margin: 0.5rem 0;
+  border: 1px solid var(--plat-mist);
+  padding: 6px;
+  border-radius: 6px;
 }
 
 .trainSelector > input {
   margin-bottom: 2px;
+}
+
+#trips > section {
+  overflow-y: auto;
+  display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 10px;
 }
 
 /* svg */

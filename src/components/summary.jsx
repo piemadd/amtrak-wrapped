@@ -1,6 +1,6 @@
 import domtoimage from "dom-to-image";
 
-const Distance = ({ distance }) => {
+const Summary = ({ miles, states, trips }) => {
   const prettyPrintNum = (num) => {
     return Math.ceil(Number(num))
       .toString()
@@ -11,141 +11,187 @@ const Distance = ({ distance }) => {
     <div className="result">
       <div>
         <svg
-          id="distance-svg"
+          width="800"
+          height="800"
           viewBox="0 0 800 800"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          id="summary-svg"
         >
           <style>@import url("./fonts.css")</style>
           <rect width="800" height="800" fill="#003A7B" />
-          <g id="lines">
-            <path
-              id="Vector 3"
-              d="M-266.95 629.443C-262.915 630.201 -96.8794 653.885 53.4584 675.286C155.591 689.825 259.332 688.614 361.103 671.732V671.732C482.223 651.639 605.99 653.781 726.342 678.052L832.542 699.469"
-              stroke="#0078B9"
-              strokeWidth="18"
-            />
-            <path
-              id="Vector 4"
-              d="M-265.38 593.478C-261.344 594.235 -95.3091 617.919 55.0288 639.32C157.162 653.859 260.902 652.649 362.673 635.766V635.766C483.793 615.674 607.561 617.816 727.913 642.087L834.113 663.503"
-              stroke="#CF202E"
-              strokeWidth="18"
-            />
-            <path
-              id="Vector 5"
-              d="M-266.165 611.461C-262.129 612.218 -96.0943 635.902 54.2436 657.303C156.376 671.842 260.117 670.632 361.888 653.749V653.749C483.008 633.657 606.775 635.798 727.128 660.069L833.327 681.486"
-              stroke="white"
-              strokeWidth="18"
-            />
-          </g>
           <text
             x="35"
-            y="86"
+            y="88"
             width="730"
             height="78"
             style={{
-              fontSize: "48px",
+              fontSize: "52px",
               fontWeight: "400",
               fontFamily: "'Kanit', sans-serif",
               fill: "#fff",
             }}
           >
-            This year, you rode the rails
+            This year, you took {trips.length}
           </text>
           <text
             x="35"
-            y="210"
+            y="170"
             width="730"
-            height="203"
-            className="length"
+            height="78"
             style={{
-              fontSize: "140px",
-              fontWeight: "700",
-              fontStyle: "italic",
+              fontSize: "52px",
+              fontWeight: "400",
               fontFamily: "'Kanit', sans-serif",
               fill: "#fff",
             }}
           >
-            {prettyPrintNum(distance)}
-            <tspan
-              style={{
-                fontSize: "48px",
-              }}
-            >
-              mi
+            {trips.length === 1 ? "trip" : "trips"}{" "}
+            <tspan fontWeight="700" fontStyle="italic">
+              {prettyPrintNum(miles)} miles
+            </tspan>
+            , through
+          </text>
+          <text
+            x="35"
+            y="248"
+            width="730"
+            height="78"
+            style={{
+              fontSize: "52px",
+              fontWeight: "400",
+              fontFamily: "'Kanit', sans-serif",
+              fill: "#fff",
+            }}
+          >
+            <tspan fontWeight="700" fontStyle="italic">
+              {states.length} states
+            </tspan>
+            , while creating less
+          </text>
+          <text
+            x="35"
+            y="326"
+            width="730"
+            height="78"
+            style={{
+              fontSize: "52px",
+              fontWeight: "400",
+              fontFamily: "'Kanit', sans-serif",
+              fill: "#fff",
+            }}
+          >
+            than{" "}
+            <tspan fontWeight="700" fontStyle="italic">
+              50% the emissions
+            </tspan>{" "}
+            of
+          </text>
+          <text
+            x="35"
+            y="404"
+            width="730"
+            height="78"
+            style={{
+              fontSize: "52px",
+              fontWeight: "400",
+              fontFamily: "'Kanit', sans-serif",
+              fill: "#fff",
+            }}
+          >
+            a plane, or less than{" "}
+            <tspan fontWeight="700" fontStyle="italic">
+              45% the
             </tspan>
           </text>
           <text
             x="35"
-            y="285"
+            y="482"
             width="730"
             height="78"
             style={{
-              fontSize: "48px",
+              fontSize: "52px",
               fontWeight: "400",
               fontFamily: "'Kanit', sans-serif",
               fill: "#fff",
             }}
           >
-            thats...
+            <tspan fontWeight="700" fontStyle="italic">
+              emissions
+            </tspan>{" "}
+            of a car. That’s
           </text>
           <text
-            x="60"
-            y="357"
+            x="35"
+            y="560"
             width="730"
             height="78"
             style={{
-              fontSize: "48px",
+              fontSize: "52px",
               fontWeight: "400",
               fontFamily: "'Kanit', sans-serif",
               fill: "#fff",
             }}
           >
-            &#x2022; {prettyPrintNum(distance/0.875)} sheppeys
+            how you{" "}
+            <tspan fontWeight="700" fontStyle="italic">
+              Amtraked
+            </tspan>{" "}
+            in 2022,
           </text>
           <text
-            x="60"
-            y="429"
+            x="35"
+            y="638"
             width="730"
             height="78"
             style={{
-              fontSize: "48px",
+              fontSize: "52px",
               fontWeight: "400",
               fontFamily: "'Kanit', sans-serif",
               fill: "#fff",
             }}
           >
-            &#x2022; {prettyPrintNum(distance/0.001547348)} horse-lengths
+            what does 2023 have in
           </text>
           <text
-            x="60"
-            y="501"
+            x="35"
+            y="716"
             width="730"
             height="78"
             style={{
-              fontSize: "48px",
+              fontSize: "52px",
               fontWeight: "400",
               fontFamily: "'Kanit', sans-serif",
               fill: "#fff",
             }}
           >
-            &#x2022; {prettyPrintNum(distance/0.0568182)} football fields
-          </text>
-          <text
-            x="60"
-            y="574"
-            width="730"
-            height="78"
-            style={{
-              fontSize: "48px",
-              fontWeight: "400",
-              fontFamily: "'Kanit', sans-serif",
-              fill: "#fff",
-            }}
-          >
-            &#x2022; {prettyPrintNum(distance/0.0010573864)} smoots
+            store?
           </text>
 
+          <rect
+            x="735"
+            y="897"
+            width="908"
+            height="21.6668"
+            transform="rotate(-90 735 897)"
+            fill="#CF202E"
+          />
+          <rect
+            x="756.667"
+            y="897"
+            width="908"
+            height="21.6668"
+            transform="rotate(-90 756.667 897)"
+            fill="white"
+          />
+          <rect
+            x="778.334"
+            y="897"
+            width="908"
+            height="21.6668"
+            transform="rotate(-90 778.334 897)"
+            fill="#0078B9"
+          />
           <text
             x="400"
             y="752"
@@ -161,17 +207,12 @@ const Distance = ({ distance }) => {
           >
             backtrak.amtraker.com
           </text>
-          <defs>
-            <clipPath id="clip0_413_50">
-              <rect width="800" height="800" fill="white" />
-            </clipPath>
-          </defs>
         </svg>
       </div>
       <button
         onClick={() => {
           const svgElement =
-            document.getElementById("distance-svg").parentElement;
+            document.getElementById("summary-svg").parentElement;
           console.log("cloning");
           let clonedSvgElement = svgElement.cloneNode(true);
           console.log(clonedSvgElement);
@@ -189,7 +230,7 @@ const Distance = ({ distance }) => {
               //console.log(dataUrl)
               const a = document.createElement("a");
               a.href = dataUrl;
-              a.download = "amtraker-backtrak-distance.png";
+              a.download = "amtraker-backtrak-summary.png";
               a.click();
             })
             .catch((e) => {
@@ -203,4 +244,4 @@ const Distance = ({ distance }) => {
   );
 };
 
-export default Distance;
+export default Summary;

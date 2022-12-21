@@ -3,17 +3,21 @@ import routes from "./data/routes";
 import stations from "./data/stations";
 import "./App.css";
 
-import Distance from "./components/Distance";
+import Distance from "./components/distance.jsx";
+import Driving from "./components/driving.jsx";
+import Flying from "./components/flying.jsx";
+import States from "./components/states.jsx";
+import Summary from "./components/summary.jsx";
 
 //grams co2 per passenger mile
 const carbonStats = {
   // https://kleinmanenergy.upenn.edu/news-insights/traveling-across-the-united-states-the-old-fashioned-way/
-  amtrak: 360_000 / 3099,
+  amtrak: 360_000 / 3099, //116.2
   // https://kleinmanenergy.upenn.edu/news-insights/traveling-across-the-united-states-the-old-fashioned-way/
-  plane: 570_000 / 2402,
+  plane: 570_000 / 2402, //237.3
   // per mile https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle#driving
   // avg passengers https://css.umich.edu/publications/factsheets/mobility/personal-transportation-factsheet
-  car: 404 / 1.5,
+  car: 404 / 1.5, //269.33
 };
 
 console.log("carbonStats", carbonStats);
@@ -35,74 +39,10 @@ export default function App() {
     const dMiles = d * 0.000621371; // in miles
     return dMiles;
   };
-  /*
+
   const [inputFields, setInputFields] = useState([
     { train: "", start: "", stop: "" },
   ]);
-  */
-
-  const [inputFields, setInputFields] = useState([
-    {
-      "train": "Crescent",
-      "start": "ATL - Atlanta",
-      "stop": "WAS - Washington Union Station"
-    },
-    {
-      "train": "Capitol Limited",
-      "start": "WAS - Washington Union Station",
-      "stop": "CHI - Chicago Union Station"
-    },
-    {
-      "train": "Lincoln Service",
-      "start": "CHI - Chicago Union Station",
-      "stop": "JOL - Joliet Gateway Center"
-    },
-    {
-      "train": "Cardinal",
-      "start": "CHI - Chicago Union Station",
-      "stop": "ALX - Alexandria"
-    },
-    {
-      "train": "Acela",
-      "start": "WAS - Washington Union Station",
-      "stop": "BOS - Boston"
-    },
-    {
-      "train": "Downeaster",
-      "start": "BON - Boston",
-      "stop": "POR - Portland"
-    },
-    {
-      "train": "Downeaster",
-      "start": "POR - Portland",
-      "stop": "BON - Boston"
-    },
-    {
-      "train": "Lake Shore Limited",
-      "start": "BOS - Boston",
-      "stop": "CHI - Chicago Union Station"
-    },
-    {
-      "train": "Capitol Limited",
-      "start": "CHI - Chicago Union Station",
-      "stop": "WAS - Washington Union Station"
-    },
-    {
-      "train": "Crescent",
-      "start": "WAS - Washington Union Station",
-      "stop": "ATL - Atlanta"
-    },
-    {
-      "train": "Crescent",
-      "start": "ATL - Atlanta",
-      "stop": "WAS - Washington Union Station"
-    },
-    {
-      "train": "Capitol Limited",
-      "start": "WAS - Washington Union Station",
-      "stop": "CHI - Chicago Union Station"
-    }
-  ])
 
   const [results, setResults] = useState({
     completed: false,
@@ -245,9 +185,9 @@ export default function App() {
   return (
     <main>
       <section id="title">
-        <h1>Traked</h1>
+        <h1>Backtrak</h1>
         <p id="slogan">
-          How has your year <i>Traked</i>?
+          How have you <i>Amtraked</i>?
         </p>
         <hr className="solid" />
       </section>
@@ -256,12 +196,6 @@ export default function App() {
         <section id="results">
           <div>
             <h2>Results</h2>
-            <p>Total Distance: {results.totalDistance} miles</p>
-            <p>Total Trips: {results.totalTrips}</p>
-            <p>Carbon Saved Car: {results.carbonSavedCar}g CO2</p>
-            <p>Carbon Saved Plane: {results.carbonSavedPlane}g CO2</p>
-            <p>States Traveled: {results.states.join(", ")}</p>
-            <p>Trips Raw:</p>
             <ul>
               {results.trips.map((trip, index) => {
                 return null;
@@ -270,6 +204,14 @@ export default function App() {
             </ul>
           </div>
             <Distance distance={results.totalDistance} />
+            <br/>
+            <Driving grams={results.carbonSavedCar}/>
+            <br/>
+            <Flying grams={results.carbonSavedPlane}/>
+            <br/>
+            <States states={results.states}/>
+            <br/>
+            <Summary states={results.states} miles={results.totalDistance} trips={results.trips} />
         </section>
       ) : (
         <section id="trips">
@@ -289,6 +231,7 @@ export default function App() {
               );
             })}
           </datalist>
+          <section>
           {inputFields.map((input, index) => {
             return (
               <div key={index} className="trainSelector">
@@ -331,18 +274,14 @@ export default function App() {
               </div>
             );
           })}
+          </section>
+          <br/>
           <button onClick={addFields}>Add More...</button>
           &nbsp;
           <button onClick={processResults}>Calculate</button>
         </section>
       )}
-      <textarea
-        onChange={(event) => {
-          setInputFields(JSON.parse(event.target.value));
-        }}
-        value={JSON.stringify(inputFields, null, 2)}
-        style={{ width: "80vw", height: "400px" }}
-      ></textarea>
+      <a href='https://amtraker.com/privacy.html'>Privacy Policy</a>
     </main>
   );
 }
