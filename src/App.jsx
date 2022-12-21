@@ -40,8 +40,18 @@ export default function App() {
     return dMiles;
   };
 
+  const flatAndSort = (array) => {
+    //flatten array
+    let flatArray = array.flat();
+    //remove duplicates
+    flatArray = [...new Set(flatArray)];
+    //sort
+    let sortedArray = flatArray.sort();
+    return sortedArray;
+  };
+
   const [inputFields, setInputFields] = useState([
-    { train: "", start: "", stop: "" },
+    { train: "Acela", start: "", stop: "" },
   ]);
 
   const [results, setResults] = useState({
@@ -65,7 +75,7 @@ export default function App() {
     let data = [...inputFields];
     data.splice(index, 1);
 
-    if (data.length === 0) data.push({ train: "", start: "", stop: "" });
+    if (data.length === 0) data.push({ train: "Acela", start: "", stop: "" });
     setInputFields(data);
   };
 
@@ -76,7 +86,7 @@ export default function App() {
   };
 
   const addFields = () => {
-    let newfield = { train: "", start: "", stop: "" };
+    let newfield = { train: "Acela", start: "", stop: "" };
     setInputFields([...inputFields, newfield]);
   };
 
@@ -249,7 +259,7 @@ export default function App() {
                     value={input.train}
                     onChange={(event) => handleFormChange(index, event)}
                   >
-                    {Object.keys(routes).map((route) => {
+                    {Object.keys(routes).sort().map((route) => {
                       return (
                         <option key={`trainList-${route}`} value={route} >
                           {route}
@@ -268,7 +278,7 @@ export default function App() {
                     value={input.start}
                     onChange={(event) => handleFormChange(index, event)}
                   >
-                    {Object.keys(stations).map((stationKey) => {
+                    {flatAndSort(routes[input.train]).sort().map((stationKey) => {
                       return (
                         <option
                           key={`trainList-${stationKey}`}
@@ -288,7 +298,7 @@ export default function App() {
                     value={input.stop}
                     onChange={(event) => handleFormChange(index, event)}
                   >
-                    {Object.keys(stations).map((stationKey) => {
+                    {flatAndSort(routes[input.train]).sort().map((stationKey) => {
                       return (
                         <option
                           key={`trainList-${stationKey}`}

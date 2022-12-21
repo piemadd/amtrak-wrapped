@@ -5,6 +5,12 @@ const stations = {
     "lon": -76.16326,
     "state": "MD"
   },
+  "ABQ": {
+    "name": "Albuquerque Amtrak Station",
+    "lat": 35.082366,
+    "lon": -106.648209,
+    "state": "NM"
+  },
   "ACA": {
     "name": "Antioch-Pittsburg",
     "lat": 38.0177,
@@ -159,6 +165,12 @@ const stations = {
     "name": "Barstow",
     "lat": 34.90482,
     "lon": -117.025435,
+    "state": "CA"
+  },
+  "BBK": {
+    "name": "Burbank",
+    "lat": 34.178624,
+    "lon": -118.311799,
     "state": "CA"
   },
   "BBY": {
@@ -575,6 +587,12 @@ const stations = {
     "lon": -121.737707,
     "state": "CA"
   },
+  "DDG": {
+    "name": "Dodge City Amtrak",
+    "lat": 37.752436,
+    "lon": -100.016273,
+    "state": "KS"
+  },
   "DEM": {
     "name": "Deming Amtrak",
     "lat": 32.27177,
@@ -857,6 +875,12 @@ const stations = {
     "lon": -79.757056,
     "state": "SC"
   },
+  "FMD": {
+    "name": "Fort Madison Amtrak",
+    "lat": 40.629535,
+    "lon": -91.313593,
+    "state": "IA"
+  },
   "FMG": {
     "name": "Fort Morgan Amtrak Station",
     "lat": 40.247169,
@@ -929,6 +953,12 @@ const stations = {
     "lon": -90.364106,
     "state": "IL"
   },
+  "GCK": {
+    "name": "Garden City Amtrak Station",
+    "lat": 37.964208,
+    "lon": -100.873359,
+    "state": "KS"
+  },
   "GDL": {
     "name": "Glendale Amtrak",
     "lat": 34.123706,
@@ -976,6 +1006,12 @@ const stations = {
     "lat": 42.075038,
     "lon": -87.805562,
     "state": "IL"
+  },
+  "GLP": {
+    "name": "Gallup Amtrak",
+    "lat": 35.529245,
+    "lon": -108.740148,
+    "state": "NM"
   },
   "GNB": {
     "name": "Greensburg Amtrak",
@@ -1217,6 +1253,12 @@ const stations = {
     "lon": -82.439735,
     "state": "WV"
   },
+  "HUT": {
+    "name": "Hutchinson",
+    "lat": 38.055751,
+    "lon": -97.930955,
+    "state": "KS"
+  },
   "IDP": {
     "name": "Independence Amtrak Station",
     "lat": 39.086917,
@@ -1367,6 +1409,23 @@ const stations = {
     "lon": -87.871545,
     "state": "IL"
   },
+  "LAJ": {
+    "name": "La Junta Amtrak",
+    "lat": 37.988336,
+    "lon": -103.543165,
+    "state": "CO"
+  },
+  "LAK": {
+    "name": "Lakeland Amtrak",
+    "lat": 28.045742,
+    "lon": -81.95187,
+    "state": "FL"
+  },
+  "LAP": {
+    "name": "La Plata Amtrak Station",
+    "lat": 40.029149,
+    "lon": -92.493883,
+  },
   "LAU": {
     "name": "Laurel Amtrak Station",
     "lat": 31.692168,
@@ -1427,6 +1486,18 @@ const stations = {
     "lon": -115.54889,
     "state": "MT"
   },
+  "LKL": {
+    "name": "Lakeland Amtrak",
+    "lat": 28.045742,
+    "lon": -81.95187,
+    "state": "FL"
+  },
+  "LMR": {
+    "name": "Lamar Amtrak Station",
+    "lat": 38.089721,
+    "lon": -102.618395,
+    "state": "CO"
+  },
   "LMY": {
     "name": "Lamy",
     "lat": 35.480973,
@@ -1475,6 +1546,12 @@ const stations = {
     "lon": -120.605001,
     "state": "CA"
   },
+  "LRC": {
+    "name": "Lawrence Amtrak Station",
+    "lat": 38.97123, 
+    "lon": -95.230346,
+    "state": "KS"
+  },
   "LRK": {
     "name": "Little Rock Union Station",
     "lat": 34.750298,
@@ -1486,6 +1563,12 @@ const stations = {
     "lat": 43.833155,
     "lon": -91.247298,
     "state": "WI"
+  },
+  "LSV": {
+    "name": "Las Vegas, NM",
+    "lat": 35.593476,
+    "lon": -105.212718,
+    "state": "NM"
   },
   "LVW": {
     "name": "Longview",
@@ -1757,6 +1840,12 @@ const stations = {
     "lon": -76.871494,
     "state": "MD"
   },
+  "NDL": {
+    "name": "Needles Amtrak Station",
+    "lat": 34.840655,
+    "lon": -114.605918,
+    "state": "CA"
+  },
   "NEW": {
     "name": "Newton",
     "lat": 38.046976,
@@ -1834,6 +1923,12 @@ const stations = {
     "lat": 41.779514,
     "lon": -88.145497,
     "state": "IL"
+  },
+  "NRG": {
+    "name": "Northridge Amtrak",
+    "lat": 34.230641,
+    "lon": -118.54543,
+    "state": "CA"
   },
   "NRK": {
     "name": "Newark Amtrak",
@@ -2146,6 +2241,12 @@ const stations = {
     "lat": 39.957063,
     "lon": -91.368525,
     "state": "IL"
+  },
+  "RAT": {
+    "name": "Raton Amtrak Station",
+    "lat": 36.900944,
+    "lon": -104.438021,
+    "state": "NM"
   },
   "RDD": {
     "name": "Redding Amtrak",
@@ -2663,6 +2764,12 @@ const stations = {
     "lon": -83.541721,
     "state": "OH"
   },
+  "TOP": {
+    "name": "Topeka",
+    "lat": 39.05141,
+    "lon": -95.66490,
+    "state": "KS"
+  },
   "TPA": {
     "name": "Tampa",
     "lat": 27.952492,
@@ -2680,6 +2787,12 @@ const stations = {
     "lat": 40.219011,
     "lon": -74.75444,
     "state": "NJ"
+  },
+  "TRI": {
+    "name": "Trinidad Amtrak Station",
+    "lat": 37.172296,
+    "lon": -104.508461,
+    "state": "CO"
   },
   "TRK": {
     "name": "Turlock-Denair",
@@ -2764,6 +2877,12 @@ const stations = {
     "lat": 44.180921,
     "lon": -73.248824,
     "state": "VT"
+  },
+  "VRV": {
+    "name": "Victorville",
+    "lat": 34.537384,
+    "lon": -117.293700,
+    "state": "CA"
   },
   "WAB": {
     "name": "Waterbury-Stowe Amtrak Station",
@@ -2872,6 +2991,12 @@ const stations = {
     "lat": 35.723135,
     "lon": -77.908029,
     "state": "NC"
+  },
+  "WLO": {
+    "name": "Winslow",
+    "lat": 35.021229,
+    "lon": -110.695036,
+    "state": "AZ"
   },
   "WLY": {
     "name": "Westerly Amtrak Station",
