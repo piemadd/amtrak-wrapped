@@ -89,7 +89,7 @@ export default function App() {
       let startStationIndex = trainArray.indexOf(startStation);
       let stopStationIndex = trainArray.indexOf(stopStation);
 
-      console.log(startStationIndex, stopStationIndex)
+      console.log(startStationIndex, stopStationIndex);
 
       if (startStationIndex === -1 || stopStationIndex === -1) continue;
 
@@ -143,7 +143,7 @@ export default function App() {
             stations[arr[index + 1]].lat, // lat2
             stations[arr[index + 1]].lon // lon2
           );
-        })
+        });
 
         const carbonSavedPlane =
           distance * carbonStats.plane - distance * carbonStats.amtrak;
@@ -173,7 +173,7 @@ export default function App() {
       carbonSavedPlane: totalCarbonSavedPlane,
       carbonSavedCar: totalCarbonSavedCar,
       trips,
-      states
+      states,
     };
 
     setResults(final);
@@ -203,15 +203,19 @@ export default function App() {
               })}
             </ul>
           </div>
-            <Distance distance={results.totalDistance} />
-            <br/>
-            <Driving grams={results.carbonSavedCar}/>
-            <br/>
-            <Flying grams={results.carbonSavedPlane}/>
-            <br/>
-            <States states={results.states}/>
-            <br/>
-            <Summary states={results.states} miles={results.totalDistance} trips={results.trips} />
+          <Distance distance={results.totalDistance} />
+          <br />
+          <Driving grams={results.carbonSavedCar} />
+          <br />
+          <Flying grams={results.carbonSavedPlane} />
+          <br />
+          <States states={results.states} />
+          <br />
+          <Summary
+            states={results.states}
+            miles={results.totalDistance}
+            trips={results.trips}
+          />
         </section>
       ) : (
         <section id="trips">
@@ -232,56 +236,82 @@ export default function App() {
             })}
           </datalist>
           <section>
-          {inputFields.map((input, index) => {
-            return (
-              <div key={index} className="trainSelector">
-                <label htmlFor={`train-${index}`}>
-                  Train Name:&nbsp;&nbsp;
-                </label>
-                <input
-                  list="trainList"
-                  id={`train-${index}`}
-                  name="train"
-                  value={input.train}
-                  onChange={(event) => handleFormChange(index, event)}
-                />
-                <br />
-                <label htmlFor={`origin-${index}`}>
-                  Origin Stop:&nbsp;&nbsp;
-                </label>
-                <input
-                  list="stationsList"
-                  id={`origin-${index}`}
-                  name="start"
-                  value={input.start}
-                  onChange={(event) => handleFormChange(index, event)}
-                />
-                <br />
-                <label htmlFor={`destination-${index}`}>
-                  Destination Stop:&nbsp;&nbsp;
-                </label>
-                <input
-                  list="stationsList"
-                  id={`destination-${index}`}
-                  name="stop"
-                  value={input.stop}
-                  onChange={(event) => handleFormChange(index, event)}
-                />
-                <br />
-                <button onClick={() => deleteFields(index)}>Delete</button>
-                &nbsp;
-                <button onClick={() => copyFields(index)}>Copy</button>
-              </div>
-            );
-          })}
+            {inputFields.map((input, index) => {
+              return (
+                <div key={index} className="trainSelector">
+                  <label htmlFor={`train-${index}`}>
+                    Train Name:&nbsp;&nbsp;
+                  </label>
+                  <select
+                    list="trainList"
+                    id={`train-${index}`}
+                    name="train"
+                    value={input.train}
+                    onChange={(event) => handleFormChange(index, event)}
+                  >
+                    {Object.keys(routes).map((route) => {
+                      return (
+                        <option key={`trainList-${route}`} value={route} >
+                          {route}
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <br />
+                  <label htmlFor={`origin-${index}`}>
+                    Origin Stop:&nbsp;&nbsp;
+                  </label>
+                  <select
+                    list="stationsList"
+                    id={`origin-${index}`}
+                    name="start"
+                    value={input.start}
+                    onChange={(event) => handleFormChange(index, event)}
+                  >
+                    {Object.keys(stations).map((stationKey) => {
+                      return (
+                        <option
+                          key={`trainList-${stationKey}`}
+                          value={`${stationKey} - ${stations[stationKey].name}`}
+                        >{`${stationKey} - ${stations[stationKey].name}`}</option>
+                      );
+                    })}
+                  </select>
+                  <br />
+                  <label htmlFor={`destination-${index}`}>
+                    Destination Stop:&nbsp;&nbsp;
+                  </label>
+                  <select
+                    list="stationsList"
+                    id={`destination-${index}`}
+                    name="stop"
+                    value={input.stop}
+                    onChange={(event) => handleFormChange(index, event)}
+                  >
+                    {Object.keys(stations).map((stationKey) => {
+                      return (
+                        <option
+                          key={`trainList-${stationKey}`}
+                          value={`${stationKey} - ${stations[stationKey].name}`}
+                        >{`${stationKey} - ${stations[stationKey].name}`}</option>
+                      );
+                    })}
+                  </select>
+                  <br />
+                  <button onClick={() => deleteFields(index)}>Delete</button>
+                  &nbsp;
+                  <button onClick={() => copyFields(index)}>Copy</button>
+                </div>
+              );
+            })}
           </section>
-          <br/>
+          <br />
           <button onClick={addFields}>Add More...</button>
           &nbsp;
           <button onClick={processResults}>Calculate</button>
         </section>
       )}
-      <a href='https://amtraker.com/privacy.html'>Privacy Policy</a>
+      <a href="https://amtraker.com/privacy.html">Privacy Policy</a>
     </main>
   );
 }
