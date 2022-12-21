@@ -221,7 +221,7 @@ export default function App() {
         <section id="trips">
           <h2>Trips</h2>
           <datalist id="trainList">
-            {Object.keys(routes).map((route) => {
+            {Object.keys(routes).sort().map((route) => {
               return <option key={`trainList-${route}`} value={route} />;
             })}
           </datalist>
