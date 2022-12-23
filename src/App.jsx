@@ -247,7 +247,6 @@ export default function App() {
         </section>
       ) : (
         <section id="trips">
-          <Distance distance={9_999_999} />
           <h2>Trips</h2>
           <datalist id="trainList">
             {Object.keys(routes)
