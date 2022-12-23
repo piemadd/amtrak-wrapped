@@ -53,8 +53,8 @@ export default function App() {
   const [inputFields, setInputFields] = useState([
     {
       train: "Acela",
-      start: "BAL - Baltimore Penn Station",
-      stop: "BAL - Baltimore Penn Station",
+      start: "BOS - Boston",
+      stop: "NHV - New Haven",
       count: 1,
     },
   ]);
@@ -83,8 +83,8 @@ export default function App() {
     if (data.length === 0)
       data.push({
         train: "Acela",
-        start: "BAL - Baltimore Penn Station",
-        stop: "BAL - Baltimore Penn Station",
+        start: "BOS - Boston",
+        stop: "NHV - New Haven",
         count: 1,
       });
     setInputFields(data);
@@ -99,8 +99,8 @@ export default function App() {
   const addFields = () => {
     let newfield = {
       train: "Acela",
-      start: "BAL - Baltimore Penn Station",
-      stop: "BAL - Baltimore Penn Station",
+      start: "BOS - Boston",
+      stop: "NHV - New Haven",
       count: 1,
     };
     setInputFields([...inputFields, newfield]);
@@ -153,6 +153,7 @@ export default function App() {
 
       if (train && start && stop) {
         const allStations = findInbetweenStations(start, stop, train);
+        console.log('all stations', allStations)
 
         let distance = 0;
         allStations.forEach((station, index, arr) => {
@@ -160,7 +161,7 @@ export default function App() {
             states.push(stations[station].state);
           }
 
-          if (index === 0 || index === arr.length - 1) return;
+          if (index === arr.length - 1) return;
 
           for (let i = 0; i < count; i++) {
             distance += calculateDistanceBetweenCoordinates(
@@ -246,6 +247,7 @@ export default function App() {
         </section>
       ) : (
         <section id="trips">
+          <Distance distance={9_999_999} />
           <h2>Trips</h2>
           <datalist id="trainList">
             {Object.keys(routes)

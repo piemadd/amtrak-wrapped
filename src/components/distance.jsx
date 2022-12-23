@@ -40,7 +40,7 @@ const Distance = ({ distance }) => {
           </g>
           <text
             x="35"
-            y="86"
+            y="69"
             width="730"
             height="78"
             style={{
@@ -54,7 +54,7 @@ const Distance = ({ distance }) => {
           </text>
           <text
             x="35"
-            y="210"
+            y="190"
             width="730"
             height="203"
             className="length"
@@ -77,7 +77,7 @@ const Distance = ({ distance }) => {
           </text>
           <text
             x="35"
-            y="285"
+            y="260"
             width="730"
             height="78"
             style={{
@@ -91,7 +91,7 @@ const Distance = ({ distance }) => {
           </text>
           <text
             x="60"
-            y="357"
+            y="317"
             width="730"
             height="78"
             style={{
@@ -105,7 +105,7 @@ const Distance = ({ distance }) => {
           </text>
           <text
             x="60"
-            y="429"
+            y="384"
             width="730"
             height="78"
             style={{
@@ -119,7 +119,21 @@ const Distance = ({ distance }) => {
           </text>
           <text
             x="60"
-            y="501"
+            y="451"
+            width="730"
+            height="78"
+            style={{
+              fontSize: "48px",
+              fontWeight: "400",
+              fontFamily: "'Kanit', sans-serif",
+              fill: "#fff",
+            }}
+          >
+            &#x2022; {prettyPrintNum(distance/0.00011)} bananas
+          </text>
+          <text
+            x="60"
+            y="518"
             width="730"
             height="78"
             style={{
@@ -133,7 +147,7 @@ const Distance = ({ distance }) => {
           </text>
           <text
             x="60"
-            y="574"
+            y="584" 
             width="730"
             height="78"
             style={{
