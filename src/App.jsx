@@ -8,7 +8,6 @@ import Driving from "./components/driving.jsx";
 import Flying from "./components/flying.jsx";
 import States from "./components/states.jsx";
 import Summary from "./components/summary.jsx";
-import { isConditionalExpression } from "typescript";
 
 //grams co2 per passenger mile
 const carbonStats = {
@@ -52,7 +51,12 @@ export default function App() {
   };
 
   const [inputFields, setInputFields] = useState([
-    { train: "Acela", start: "BAL - Baltimore Penn Station", stop: "BAL - Baltimore Penn Station" },
+    {
+      train: "Acela",
+      start: "BAL - Baltimore Penn Station",
+      stop: "BAL - Baltimore Penn Station",
+      count: 1,
+    },
   ]);
 
   const [results, setResults] = useState({
@@ -76,7 +80,13 @@ export default function App() {
     let data = [...inputFields];
     data.splice(index, 1);
 
-    if (data.length === 0) data.push({ train: "Acela", start: "BAL - Baltimore Penn Station", stop: "BAL - Baltimore Penn Station" });
+    if (data.length === 0)
+      data.push({
+        train: "Acela",
+        start: "BAL - Baltimore Penn Station",
+        stop: "BAL - Baltimore Penn Station",
+        count: 1,
+      });
     setInputFields(data);
   };
 
@@ -87,7 +97,12 @@ export default function App() {
   };
 
   const addFields = () => {
-    let newfield = { train: "Acela", start: "BAL - Baltimore Penn Station", stop: "BAL - Baltimore Penn Station" };
+    let newfield = {
+      train: "Acela",
+      start: "BAL - Baltimore Penn Station",
+      stop: "BAL - Baltimore Penn Station",
+      count: 1,
+    };
     setInputFields([...inputFields, newfield]);
   };
 
@@ -134,6 +149,7 @@ export default function App() {
       let train = input.train;
       let start = input.start;
       let stop = input.stop;
+      let count = input.count;
 
       if (train && start && stop) {
         const allStations = findInbetweenStations(start, stop, train);
@@ -146,12 +162,14 @@ export default function App() {
 
           if (index === 0 || index === arr.length - 1) return;
 
-          distance += calculateDistanceBetweenCoordinates(
-            stations[station].lat, // lat1
-            stations[station].lon, // lon1
-            stations[arr[index + 1]].lat, // lat2
-            stations[arr[index + 1]].lon // lon2
-          );
+          for (let i = 0; i < count; i++) {
+            distance += calculateDistanceBetweenCoordinates(
+              stations[station].lat, // lat1
+              stations[station].lon, // lon1
+              stations[arr[index + 1]].lat, // lat2
+              stations[arr[index + 1]].lon // lon2
+            );
+          }
         });
 
         const carbonSavedPlane =
@@ -230,9 +248,11 @@ export default function App() {
         <section id="trips">
           <h2>Trips</h2>
           <datalist id="trainList">
-            {Object.keys(routes).sort().map((route) => {
-              return <option key={`trainList-${route}`} value={route} />;
-            })}
+            {Object.keys(routes)
+              .sort()
+              .map((route) => {
+                return <option key={`trainList-${route}`} value={route} />;
+              })}
           </datalist>
           <datalist id="stationsList">
             {Object.keys(stations).map((stationKey) => {
@@ -258,13 +278,15 @@ export default function App() {
                     value={input.train}
                     onChange={(event) => handleFormChange(index, event)}
                   >
-                    {Object.keys(routes).sort().map((route) => {
-                      return (
-                        <option key={`trainList-${route}`} value={route} >
-                          {route}
-                        </option>
-                      );
-                    })}
+                    {Object.keys(routes)
+                      .sort()
+                      .map((route) => {
+                        return (
+                          <option key={`trainList-${route}`} value={route}>
+                            {route}
+                          </option>
+                        );
+                      })}
                   </select>
                   <br />
                   <label htmlFor={`origin-${index}`}>
@@ -277,14 +299,16 @@ export default function App() {
                     value={input.start}
                     onChange={(event) => handleFormChange(index, event)}
                   >
-                    {flatAndSort(routes[input.train]).sort().map((stationKey) => {
-                      return (
-                        <option
-                          key={`trainList-${stationKey}`}
-                          value={`${stationKey} - ${stations[stationKey].name}`}
-                        >{`${stationKey} - ${stations[stationKey].name}`}</option>
-                      );
-                    })}
+                    {flatAndSort(routes[input.train])
+                      .sort()
+                      .map((stationKey) => {
+                        return (
+                          <option
+                            key={`trainList-${stationKey}`}
+                            value={`${stationKey} - ${stations[stationKey].name}`}
+                          >{`${stationKey} - ${stations[stationKey].name}`}</option>
+                        );
+                      })}
                   </select>
                   <br />
                   <label htmlFor={`destination-${index}`}>
@@ -297,15 +321,30 @@ export default function App() {
                     value={input.stop}
                     onChange={(event) => handleFormChange(index, event)}
                   >
-                    {flatAndSort(routes[input.train]).sort().map((stationKey) => {
-                      return (
-                        <option
-                          key={`trainList-${stationKey}`}
-                          value={`${stationKey} - ${stations[stationKey].name}`}
-                        >{`${stationKey} - ${stations[stationKey].name}`}</option>
-                      );
-                    })}
+                    {flatAndSort(routes[input.train])
+                      .sort()
+                      .map((stationKey) => {
+                        return (
+                          <option
+                            key={`trainList-${stationKey}`}
+                            value={`${stationKey} - ${stations[stationKey].name}`}
+                          >{`${stationKey} - ${stations[stationKey].name}`}</option>
+                        );
+                      })}
                   </select>
+                  <br />
+                  <label htmlFor={`trip-count-${index}`}>
+                    Trip Count:&nbsp;&nbsp;
+                  </label>
+                  <input
+                    type="number"
+                    id={`trip-count-${index}`}
+                    name="count"
+                    min={1}
+                    defaultValue={1}
+                    max={100}
+                    onChange={(event) => handleFormChange(index, event)}
+                  ></input>
                   <br />
                   <button onClick={() => deleteFields(index)}>Delete</button>
                   &nbsp;
