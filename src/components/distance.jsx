@@ -87,7 +87,7 @@ const Distance = ({ distance }) => {
               fill: "#fff",
             }}
           >
-            thats...
+            that's...
           </text>
           <text
             x="60"
